@@ -1,0 +1,33 @@
+{
+  "name": "sliding-puzzle",
+  "version": "0.0.1",
+  "description": "Sliding Puzzle",
+  "main": "src/index.js",
+  "author": "Gorka",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "gulp": "^3.9.1",
+    "html-webpack-plugin": "^2.10.0",
+    "postcss-loader": "^0.8.2",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.0",
+    "stylus": "^0.54.2",
+    "stylus-loader": "^2.0.0",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
