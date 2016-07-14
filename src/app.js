@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './app.styl';
 
 const Tile = (props) => {
-  const { item, dimensions, size } = props;
+  const { item, dimensions, size, onClick } = props;
   const { x, y, id } = item;
   let myStyles = {
       height: `${100 / size}%`,
@@ -14,7 +14,7 @@ const Tile = (props) => {
     myStyles.background = 'none';
   }
   return (
-    <div className={styles.tile} style={myStyles}>
+    <div className={styles.tile} style={myStyles} onClick={() => { onClick(id) }}>
       <div className={styles['tile-id']}>{id}</div>
     </div>
   );
@@ -36,7 +36,12 @@ export default (props) => {
       <div className={styles.bg}></div>
       <div className={styles.wrapper}>
         {elements.map((item, index) =>
-          <Tile item={item} key={index} dimensions={dimensions} size={size} /> )}
+          <Tile item={item} key={index} dimensions={dimensions} size={size} onClick={(id) => {
+            game.move(id);
+            if (game.won) {
+              alert('You have won!');
+            }
+          }} /> )}
       </div>
 		</main>
 	);

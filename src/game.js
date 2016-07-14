@@ -18,4 +18,12 @@ export default class Game {
       .map((item, index) => new Item({ index, size: this.size }))
       .sort(shuffle);
   }
+  move(id) {
+
+  }
+  get won() {
+    return this.elements
+      .filter((item, index) => item.index === index)
+      .length === this.elements.length;
+  }
 }
