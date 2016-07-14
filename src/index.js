@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import App from './app.js';
 import Game from './game';
 
-const game = new Game({ elements: 16 });
+const game = new Game({ elements: 4 });
 
 //
 document.addEventListener( 'DOMContentLoaded', () => render(
