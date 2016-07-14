@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './app.styl';
 
 const Tile = (props) => {
-  const { x, y, id, size, dimensions } = props;
+  const { item, dimensions, size } = props;
+  const { x, y, id } = item;
   let myStyles = {
       height: `${100 / size}%`,
       width: `${100 / size}%`,
@@ -21,7 +22,8 @@ const Tile = (props) => {
 //
 
 export default (props) => {
-  const { size, dimensions, image } = props,
+  const { game, dimensions } = props,
+    { size, elements } = game,
     myStyles = {
       height: `${dimensions}px`,
       width: `${dimensions}px`
@@ -33,17 +35,8 @@ export default (props) => {
 		<main className={styles.app} style={myStyles}>
       <div className={styles.bg}></div>
       <div className={styles.wrapper}>
-        {(new Array(size)).fill(0).map(i => {
-          y++;
-          return (new Array(size)).fill(0).map(j => {
-            x++;
-            if (x > size - 1) {
-              x = 0;
-            }
-            id++;
-            return <Tile x={x} y={y} id={id} key={id} size={size} dimensions={dimensions} />
-          })
-        })}
+        {elements.map((item, index) =>
+          <Tile item={item} key={index} dimensions={dimensions} size={size} /> )}
       </div>
 		</main>
 	);
