@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './app.styl';
+import styles from './styles.styl';
 
 const Tile = (props) => {
   const { item, dimensions, size, onClick, tileIndex } = props,
