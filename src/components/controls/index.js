@@ -6,27 +6,37 @@ import styles from './styles.styl';
 export default class Controls extends Component {
   constructor(props) {
     super(props);
+    const newGame = new Game()
+      .setGridSize(3)
+      .shuffle();
     this.state = {
-      game: new Game({ elements: 9 }),
-      elements: 3,
-      dimensions: 700
+      game: newGame,
+      gridSize: newGame.gridSize,
+      dimensions: 600,
+      played: 1
     };
   }
 
+  setGridSize(gridSize) {
+    this.state.game.setGridSize(gridSize);
+    this.setState({ gridSize });
+  }
+
   shuffle() {
-    this.setState({ game: new Game({ elements: this.state.elements * this.state.elements }) });
+    this.state.game.shuffle();
+    this.setState({ played: this.state.played + 1 });
   }
 
   render() {
-    const { game, dimensions, elements } = this.state,
-      myWrapperStyles = { width: dimensions }
+    const { game, dimensions, gridSize } = this.state,
+      myWrapperStyles = { width: `${dimensions}px` }
     return (
       <div>
         <div className={styles.wrapper} style={myWrapperStyles}>
           <div>
-            <label htmlFor="elements">Elements: </label>
-            <input id="elements" defaultValue={elements} ref="elements" type="number" min="2" max="10" onChange={() => {
-              this.setState({ elements: this.refs.elements.value });
+            <label htmlFor="gridSize">Grid Size: </label>
+            <input id="gridSize" defaultValue={gridSize} ref="gridSize" type="number" min="2" max="10" onChange={() => {
+              this.setGridSize(this.refs.gridSize.value);
             } }/>
           </div>
           <div>
@@ -39,7 +49,7 @@ export default class Controls extends Component {
             <input type="button" value="Shuffle" onClick={this.shuffle.bind(this)} />
           </div>
         </div>
-        <SlidingPuzzle game={game} dimensions={dimensions} />
+        <SlidingPuzzle game={game} dimensions={dimensions} gridSize={gridSize} />
       </div>
     );
   }

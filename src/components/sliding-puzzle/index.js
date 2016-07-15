@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 import styles from './styles.styl';
 
 const Tile = (props) => {
-  const { item, dimensions, size, onClick, tileIndex } = props,
+  const { item, dimensions, gridSize, onClick, tileIndex } = props,
     { id } = item,
     index = id,
-    x = index % size,
-    y = parseInt(index / size);
+    x = index % gridSize,
+    y = parseInt(index / gridSize);
   let last = {},
     myStyles = {
-      height: `${100 / size}%`,
-      width: `${100 / size}%`,
+      height: `${100 / gridSize}%`,
+      width: `${100 / gridSize}%`,
       backgroundSize: `${dimensions}px`,
-      backgroundPosition: `${100 / (size - 1) * x}% ${100 / (size - 1) * y}%`
+      backgroundPosition: `${100 / (gridSize - 1) * x}% ${100 / (gridSize - 1) * y}%`
     };
-  if (index === (size * size) - 1) {
+  if (index === (gridSize * gridSize) - 1) {
     myStyles.backgroundImage = 'none';
     last.display = 'none';
   }
   return (
     <div className={styles.tile} style={myStyles} onClick={() => {
-        if (index !== (size * size) - 1) {
+        if (index !== (gridSize * gridSize) - 1) {
           onClick({ id, index: tileIndex });
         }
       }}>
@@ -37,14 +37,15 @@ export default class SlidingPuzzle extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.game.won) {
+    if (this.props.game.won && this.state.moves) {
       alert('You have won!');
+      this.setState({ moves: 0 });
     }
   }
 
   render() {
-    const { game, dimensions } = this.props,
-      { size, elements } = game,
+    const { game, dimensions, gridSize } = this.props,
+      { elements } = game,
       myStyles = {
         height: `${dimensions}px`,
         width: `${dimensions}px`
@@ -57,9 +58,10 @@ export default class SlidingPuzzle extends Component {
         <div className={styles.bg}></div>
         <div className={styles.wrapper}>
           {elements.map((item, index) =>
-            <Tile item={item} key={index} tileIndex={index} dimensions={dimensions} size={size} onClick={({ id, index }) => {
-              this.setState({ moves: this.state.moves + 1 });
-              game.move({ id, index });
+            <Tile item={item} key={index} tileIndex={index} dimensions={dimensions} gridSize={gridSize} onClick={({ id, index }) => {
+              if (game.move({ id, index })) {
+                this.setState({ moves: this.state.moves + 1 });
+              }
             }} /> )}
         </div>
       </main>

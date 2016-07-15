@@ -29,7 +29,7 @@ gulp.task('wp.prod', done => {
 });
 
 gulp.task('server', () => {
-  let server = new WebpackDevServer(webpack(webpackConfig), {
+  const server = new WebpackDevServer(webpack(webpackConfig), {
     contentBase: webpackConfig.contentBase,
     hot: true,
     historyApiFallback: true,
@@ -43,14 +43,8 @@ gulp.task('server', () => {
   });
 });
 
-gulp.task('dev', ['wp.dev', 'server'], done => {
-  if (done) done();
-});
+gulp.task('dev', ['wp.dev', 'server']);
 
-gulp.task('prod', ['wp.prod'], done => {
-  if (done) done();
-});
+gulp.task('prod', ['wp.prod']);
 
-gulp.task('default', function() {
-    gulp.start('dev');
-});
+gulp.task('default', ['dev']);
