@@ -11,11 +11,11 @@ const Tile = (props) => {
     myStyles = {
       height: `${100 / size}%`,
       width: `${100 / size}%`,
-      backgroundSize: `${dimensions}px ${dimensions}px`,
+      backgroundSize: `${dimensions}px`,
       backgroundPosition: `${100 / (size - 1) * x}% ${100 / (size - 1) * y}%`
     };
   if (index === (size * size) - 1) {
-    myStyles.background = 'none';
+    myStyles.backgroundImage = 'none';
     last.display = 'none';
   }
   return (
