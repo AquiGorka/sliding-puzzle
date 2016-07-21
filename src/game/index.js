@@ -1,4 +1,3 @@
-import * as lib from '../lib';
 import Item from './item';
 
 export default class Game {
@@ -8,23 +7,22 @@ export default class Game {
   }
   move({ id, index }) {
     const me = this.elements.find(item => item.id === id);
-    const indexToMoveTo = me.neighbors.find((neighborIndex) => {
-      return this.elements[neighborIndex].id === (this.elements.length - 1);
-    });
+    const indexToMoveTo = me.neighbors.find((neighborIndex) =>
+      this.elements[neighborIndex].id === (this.elements.length - 1));
     if (indexToMoveTo !== undefined) {
       this.elements = this.elements.swap(index, indexToMoveTo);
       this.elements.forEach(
-        (item, index) => item.getNeighbors({ index }));
+        (item, elementIndex) => item.getNeighbors({ index: elementIndex }));
     }
     return indexToMoveTo !== undefined;
   }
-  get won() {
+  get won() {
     return this.elements
       .filter((item, index) => item.id === index)
       .length === this.elements.length;
   }
-  setGridSize( gridSize ) {
-    if (gridSize < 2 || gridSize > 10) {
+  setGridSize(gridSize) {
+    if (gridSize < 2 || gridSize > 10) {
       throw new TypeError('Invalid grid size');
     }
     this.gridSize = gridSize;

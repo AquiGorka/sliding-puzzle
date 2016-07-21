@@ -1,0 +1,6 @@
+node_modules/*
+*.DS_Store
+npm-debug.log
+config.js
+build-dev
+build-prod

@@ -1,0 +1,19 @@
+parser: babel-eslint
+extends: eslint-config-airbnb
+env:
+  node: true
+  browser: true
+  jasmine: true
+rules:
+  comma-dangle: [2, always-multiline]
+  object-curly-spacing: 0
+  indent: [2, 2, { SwitchCase: 1 }]
+  no-console: 0
+  no-alert: 0
+  no-unused-vars: [2, { vars: all, args: none }]
+  no-unused-expressions: [2, { allowTernary: true }]
+  new-cap: [2, { capIsNewExceptions: [Router] }]
+  semi: [2, always, { omitLastInOneLineBlock: true }]
+  newline-per-chained-call: 0
+  no-param-reassign: 0
+  no-use-before-define: [2, { functions: false, classes: false }]

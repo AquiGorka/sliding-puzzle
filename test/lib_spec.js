@@ -2,12 +2,12 @@ import * as lib from '../src/lib';
 
 describe('Random int', () => {
   it('should return a random integer between max and min', () => {
-    const times = 100,
-      max = 10,
-      min = 0;
+    const times = 100;
+    const max = 10;
+    const min = 0;
     (new Array(times)).fill()
       .forEach(() => {
-        let random = lib.getRandomInt(min, max);
+        const random = lib.getRandomInt(min, max);
         expect(random).toBeGreaterThan(min - 1);
         expect(random).not.toBeGreaterThan(max + 1);
       });
@@ -19,7 +19,7 @@ describe('Shuffle', () => {
     const times = 100;
     (new Array(times)).fill()
       .forEach(() => {
-        let random = lib.getRandomInt(-1, 1);
+        const random = lib.getRandomInt(-1, 1);
         expect(random).toBeGreaterThan(-2);
         expect(random).not.toBeGreaterThan(2);
       });
@@ -29,19 +29,19 @@ describe('Shuffle', () => {
 describe('Array prototype polyfill', () => {
   describe('push item', () => {
     it('should mutate the original array', () => {
-      let myArray = [1, 2];
+      const myArray = [1, 2];
       myArray.pushItem(3);
       expect(myArray).not.toEqual([1, 2]);
     });
     it('should not push an item to the array if it is not null or undefined', () => {
-      let myArray = [1, 2];
+      const myArray = [1, 2];
       myArray.pushItem(null);
       expect(myArray).toEqual([1, 2]);
       myArray.pushItem(undefined);
       expect(myArray).toEqual([1, 2]);
     });
     it('should push an item to the array only if it is not null or undefined', () => {
-      let myArray = [1, 2];
+      const myArray = [1, 2];
       myArray.pushItem(3);
       expect(myArray).toEqual([1, 2, 3]);
       myArray.pushItem(0);
@@ -58,18 +58,18 @@ describe('Array prototype polyfill', () => {
       expect(myArray).toEqual(myArray);
     });
     it('should return false when comparing two different arrays', () => {
-      const firstArray = [1, 2],
-        secondArray = [1, 3]
+      const firstArray = [1, 2];
+      const secondArray = [1, 3];
       expect(firstArray.compare(secondArray)).toEqual(false);
     });
-    it('should return false when comparing two arrays with the same items but in a different order', () => {
-      const firstArray = [1, 2],
-        secondArray = [2, 1]
+    it('should return false when comparing two arrays with the same items but in a different order', () => { // eslint-disable-line max-len
+      const firstArray = [1, 2];
+      const secondArray = [2, 1];
       expect(firstArray.compare(secondArray)).toEqual(false);
     });
     it('should return true when comparing the same array in the same order', () => {
-      const firstArray = [1, 2],
-        secondArray = [1, 2]
+      const firstArray = [1, 2];
+      const secondArray = [1, 2];
       expect(firstArray.compare(secondArray)).toEqual(true);
     });
   });
@@ -81,15 +81,15 @@ describe('Array prototype polyfill', () => {
       expect(myArray).toEqual(myArray);
     });
     it('should return an array of the same size it received', () => {
-      const myArray = [1,2];
+      const myArray = [1, 2];
       expect(myArray.shuffle().length).toEqual(myArray.length);
     });
-    it('should return new arrays that are not in the same order at least one third of the time', () => {
-      const myArray = [1,2,3],
-        times = 100;
+    it('should return new arrays that are not in the same order at least one third of the time', () => { // eslint-disable-line max-len
+      const myArray = [1, 2, 3];
+      const times = 100;
       let sameOrder = 0;
       (new Array(times).fill().forEach(() => {
-        let shuffledArray = myArray.shuffle();
+        const shuffledArray = myArray.shuffle();
         if (myArray.compare(shuffledArray)) {
           sameOrder++;
         }
@@ -111,3 +111,6 @@ describe('Array prototype polyfill', () => {
     });
   });
 });
+
+// TODO
+describe('Grid neighbors', () => {});

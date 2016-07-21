@@ -13,7 +13,7 @@ export default class Controls extends Component {
       game: newGame,
       gridSize: newGame.gridSize,
       dimensions: 600,
-      played: 1
+      played: 1,
     };
   }
 
@@ -22,31 +22,47 @@ export default class Controls extends Component {
     this.setState({ gridSize });
   }
 
-  shuffle() {
+  shuffle = () => {
     this.state.game.shuffle();
     this.setState({ played: this.state.played + 1 });
   }
 
   render() {
-    const { game, dimensions, gridSize } = this.state,
-      myWrapperStyles = { width: `${dimensions}px` }
+    const { game, dimensions, gridSize } = this.state;
+    const myWrapperStyles = { width: `${dimensions}px` };
     return (
       <div>
         <div className={styles.wrapper} style={myWrapperStyles}>
           <div>
             <label htmlFor="gridSize">Grid Size: </label>
-            <input id="gridSize" defaultValue={gridSize} ref="gridSize" type="number" min="2" max="10" onChange={() => {
-              this.setGridSize(this.refs.gridSize.value);
-            } }/>
+            <input
+              id="gridSize"
+              defaultValue={gridSize}
+              ref="gridSize"
+              type="number"
+              min="2"
+              max="10"
+              onChange={() => {
+                this.setGridSize(parseInt(this.refs.gridSize.value, 10));
+              }}
+            />
           </div>
           <div>
             <label htmlFor="dimensions">Dimensions: </label>
-            <input id="dimensions" defaultValue={dimensions} ref="dimensions" type="number" min="300" max="1500" onChange={() => {
-              this.setState({ dimensions: this.refs.dimensions.value });
-            } }/>
+            <input
+              id="dimensions"
+              defaultValue={dimensions}
+              ref="dimensions"
+              type="number"
+              min="300"
+              max="1500"
+              onChange={() => {
+                this.setState({ dimensions: parseInt(this.refs.dimensions.value, 10) });
+              }}
+            />
           </div>
           <div>
-            <input type="button" value="Shuffle" onClick={this.shuffle.bind(this)} />
+            <input type="button" value="Shuffle" onClick={this.shuffle} />
           </div>
         </div>
         <SlidingPuzzle game={game} dimensions={dimensions} gridSize={gridSize} />
