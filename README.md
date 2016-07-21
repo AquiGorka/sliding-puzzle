@@ -1,5 +1,4 @@
 # Sliding Puzzle
----
 [![Build Status](https://travis-ci.org/AquiGorka/sliding-puzzle.svg?branch=master)](https://travis-ci.org/AquiGorka/sliding-puzzle)
 
 Sliding Puzzle game developed with react, babel, es6, stylus, npm, gulp and webpack.
