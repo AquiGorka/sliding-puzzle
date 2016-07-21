@@ -8,7 +8,7 @@ const Tile = (props) => {
   const x = index % gridSize;
   const y = parseInt(index / gridSize, 10);
   const last = {};
-  let myStyles = {
+  const myStyles = {
     height: `${100 / gridSize}%`,
     width: `${100 / gridSize}%`,
     backgroundSize: `${dimensions}px`,
