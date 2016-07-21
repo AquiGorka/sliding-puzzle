@@ -1,4 +1,6 @@
 # Sliding Puzzle
+---
+[![Build Status](https://travis-ci.org/AquiGorka/sliding-puzzle.svg?branch=master)](https://travis-ci.org/AquiGorka/sliding-puzzle)
 
 Sliding Puzzle game developed with react, babel, es6, stylus, npm, gulp and webpack.
 
@@ -16,7 +18,15 @@ npm install
 gulp prod
 ```
 
-There will be a newly created build-prod folder.
+There will be a newly created build-prod folder
+
+## Tests & Linter
+```sh
+npm run test
+```
+```sh
+npm run lint
+```
 
 ### Demo
 http://storage.googleapis.com/aquigorkanet-mediamonks/index.html
