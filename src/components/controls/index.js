@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Game from '../../game';
 import SlidingPuzzle from '../sliding-puzzle';
 import styles from './styles.styl';
 
 export default class Controls extends Component {
+  static propTypes = {
+    game: PropTypes.object,
+    dimensions: PropTypes.number,
+    gridSize: PropTypes.number,
+  }
+
   constructor(props) {
     super(props);
     const newGame = new Game()
