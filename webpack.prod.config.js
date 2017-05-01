@@ -2,7 +2,7 @@ let path = require('path');
 let webpack = require('webpack');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let HtmlWebpackPlugin = require('html-webpack-plugin');
-let dir = 'build-prod';
+let dir = 'docs';
 
 module.exports = {
   entry: ['./src/index.js'],
