@@ -47,6 +47,7 @@
     "coverage": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/istanbul/lib/cli.js cover test/all.js",
     "cover-unit": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/istanbul/lib/cli.js cover test/unit.js",
     "cover-integration": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/istanbul/lib/cli.js cover test/integration.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "codecov": "cat ./coverage/lcov.info | ./node_modules/codecov/bin/codecov"
   }
 }

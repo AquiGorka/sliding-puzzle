@@ -4,3 +4,4 @@ node_js:
 after_success:
   - npm run coverage
   - npm run coveralls
+  - npm run codecov
