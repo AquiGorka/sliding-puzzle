@@ -17,6 +17,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.5.0",
+    "coveralls": "^2.13.1",
     "css-loader": "^0.23.1",
     "eslint": "^3.1.1",
     "eslint-config-airbnb": "^9.0.1",
@@ -26,6 +27,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.10.0",
+    "istanbul": "^1.0.0-alpha",
     "jasmine": "^2.4.1",
     "postcss-loader": "^0.8.2",
     "react-hot-loader": "^1.3.0",
@@ -39,7 +41,11 @@
   "scripts": {
     "unit-tests": "./node_modules/babel-cli/bin/babel-node.js test/unit.js",
     "integration-tests": "./node_modules/babel-cli/bin/babel-node.js test/integration.js",
-    "test": "npm run unit-tests && npm run integration-tests",
-    "lint": "./node_modules/.bin/eslint -c .eslintrc.yml src && ./node_modules/.bin/eslint -c .eslintrc.yml test"
+    "test": "./node_modules/babel-cli/bin/babel-node.js test/all.js",
+    "lint": "./node_modules/.bin/eslint -c .eslintrc.yml src && ./node_modules/.bin/eslint -c .eslintrc.yml test",
+    "coverage": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/istanbul/lib/cli.js cover test/all.js",
+    "cover-unit": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/istanbul/lib/cli.js cover test/unit.js",
+    "cover-integration": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/istanbul/lib/cli.js cover test/integration.js",
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
   }
 }

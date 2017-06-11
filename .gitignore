@@ -4,3 +4,4 @@ npm-debug.log
 config.js
 build-dev
 build-prod
+coverage
